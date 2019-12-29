@@ -1,0 +1,20 @@
+<h1>Count Result</h1>
+
+<h2>There are {{ wordcnt }} words in the text.</h2>
+
+<h2>Your original Words</h2>
+
+<p> {{ fulltext }}   </p>
+
+<h2>Your Words Frequency Details Here</h2>
+
+{{ worddict }}
+
+<h3>Practice for End Loop Here</h3>
+
+{% for word, cnt in items %}
+{{ word }}
+<br>
+{{ cnt }}
+<br>
+{% endfor %}
