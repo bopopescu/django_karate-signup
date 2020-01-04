@@ -32,5 +32,11 @@ def sign_up(request):
 def new_game(request):
     return render(request, 'new_game.html')
 
+
 def signup_complete(request):
+    print(request.GET['name'])
+    print(request.GET['age'])
+    name = request.GET['name']
+    print("Request:")
+    print(request)
     return render(request, 'signup_complete.html')
