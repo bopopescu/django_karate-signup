@@ -50,10 +50,24 @@ def signup_complete(request):
         key = i
         value = request.GET[i]
         signup_dict[key] = value
-    keylist = list(signup_dict.keys())
-    valuelist = list(signup_dict.values())
-    keystr = str(keylist).strip('[').strip(']')
-    valuestr = str(valuelist).strip('[').strip(']')
+        keystr, valuestr = "", ""
+    for i, j in signup_dict.items():
+        print(i)
+        print(j)
+        keystr = keystr + i + ','
+        if(i != 'age'):
+            valuestr = valuestr + "'" + j + "'" + ','
+        if(i == 'age'):
+            valuestr = valuestr + j + ','
+    keystr = keystr.rstrip(',')
+    valuestr = valuestr.rstrip(',')
+
     print(keystr)
     print(valuestr)
+    cursor.execute("insert into game01(" + keystr + ") VALUES(" + valuestr + ");")
+    cnx.commit()
+
+    cursor.close()
+    cnx.close()
+
     return render(request, 'signup_complete.html')
