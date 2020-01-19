@@ -35,10 +35,25 @@ def new_game(request):
 
 
 def signup_complete(request):
-    cnx = mysql.connector.connect(host='106.14.189.3', port='3306', user='root', passwd='L18_jhk123qwe')
-    print(cnx)
-    name = request.GET['name']
+    cnx = mysql.connector.connect(host='106.14.189.3', port='3306', user='root', passwd='L18_jhk123qwe',database='signup')
+    cursor = cnx.cursor()
+   # sql_create_table="CREATE TABLE game01(userid SMALLINT NOT NULL auto_increment PRIMARY KEY, " \
+   #                  + "name CHAR(20)," \
+   #                  + "age SMALLINT," \
+   #                  + "gender CHAR(4)" \
+   #                  + ");"
+
+#    cursor.execute(sql_create_table)
+#    name = request.GET['name']
+    signup_dict = dict()
     for i in request.GET:
-        print(i)
-        print(request.GET[i])
+        key = i
+        value = request.GET[i]
+        signup_dict[key] = value
+    keylist = list(signup_dict.keys())
+    valuelist = list(signup_dict.values())
+    keystr = str(keylist).strip('[').strip(']')
+    valuestr = str(valuelist).strip('[').strip(']')
+    print(keystr)
+    print(valuestr)
     return render(request, 'signup_complete.html')
