@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+import mysql.connector
 
 
 def homepage(request):
@@ -34,9 +35,10 @@ def new_game(request):
 
 
 def signup_complete(request):
-    print(request.GET['name'])
-    print(request.GET['age'])
+    cnx = mysql.connector.connect(host='106.14.189.3', port='3306', user='root', passwd='L18_jhk123qwe')
+    print(cnx)
     name = request.GET['name']
-    print("Request:")
-    print(request)
+    for i in request.GET:
+        print(i)
+        print(request.GET[i])
     return render(request, 'signup_complete.html')
