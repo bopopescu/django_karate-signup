@@ -11,7 +11,11 @@
   性别:<p>   </p>
   <input type="radio" name="gender" value="male" checked> 男<br>
   <input type="radio" name="gender" value="female"> 女<br>
+  <input type="submit" value="报名">
+</form>
 
+<br>
 
-  <input type="submit" value="Submit">
+<form action="{% url 'selecting' %}">
+<input type="submit" value="返回选择赛事页面">
 </form>

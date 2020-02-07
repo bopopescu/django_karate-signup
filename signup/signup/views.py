@@ -7,6 +7,10 @@ def homepage(request):
     return render(request, 'home.html', {'key1':'value1'})
 
 
+def selecting(request):
+    return render(request, 'selecting.html')
+
+
 def count(request):
     fulltext = request.GET['fulltext']
     print("request_print:")
